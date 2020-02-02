@@ -1,0 +1,62 @@
+﻿@{
+    ViewBag.Title = "Page 2";
+
+}
+@model IEnumerable<InterviewTest001.Models.UserDocument>
+    <div class="row">
+        <div class="col-md-12">
+            <hr />
+            <form method="post" action="/Home/Page_2">
+                <div class="container">
+                    <div class="row">
+                        <label class="col-sm-2">Unique Code</label>
+                        <div class="col-sm-4">
+                            <input type="text" name="UniqueCode" class="form-control" placeholder="Unique Code" required />
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <label class="col-sm-2">Email</label>
+                        <div class="col-sm-4">
+                            <input type="email" name="Email" class="form-control" placeholder="Email Address" required />
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <label class="col-sm-2"></label>
+                        <div class="col-sm-4">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
+                    </div>
+                    <br />
+                </div>
+
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <td>Document Title</td>
+                            <td>Document Size</td>
+                            <td>Action</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var file in Model)
+                        {
+                            <tr>
+
+                                <td>@file.DocumentTitle</td>
+                                <td>@file.DocumentSize KB</td>
+                                <td><a href="/Home/DeleteFile/@file.DocumentId">Delete File</a></td>
+                            </tr>
+
+
+                        }
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+
+
+
+ 
